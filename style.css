@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: 0.2fr minmax(0.2fr, 1fr) 1fr;
+  grid-gap: 2rem;
+}
+
+.container {
+  max-width: 1320px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+.heading {
+  grid-row: 1/2;
+}
+
+.addNewBook {
+  grid-row: 2/3;
+}
+
+.library {
+  grid-row: 3/4;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 0.5fr;
+}
