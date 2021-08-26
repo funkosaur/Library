@@ -40,8 +40,9 @@
 
 .form {
   display: flex;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   flex-direction: column;
-  transition: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  overflow: hidden;
   justify-content: space-between;
   height: 60vh;
   align-items: center;
@@ -49,8 +50,7 @@
   box-shadow: 0px 0px 4px 4px rgb(158, 158, 158);
   border: none;
   border-radius: 0.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 0 1rem 0;
 }
 
 #addBook {
@@ -133,4 +133,13 @@
   position: absolute;
   top: 10px;
   left: 290px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
