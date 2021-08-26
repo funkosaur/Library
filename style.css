@@ -18,10 +18,20 @@
 
 .heading {
   grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 .addNewBook {
   grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .library {
@@ -31,5 +41,96 @@
 .form {
   display: flex;
   flex-direction: column;
-  height: 0.5fr;
+  transition: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  justify-content: space-between;
+  height: 60vh;
+  align-items: center;
+  width: 35%;
+  box-shadow: 0px 0px 4px 4px rgb(158, 158, 158);
+  border: none;
+  border-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#addBook {
+  padding: 1.5rem;
+  width: 65%;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  background-color: #008cba;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#addBook:hover {
+  background-color: #07a9df;
+}
+
+.author-div,
+.title-div,
+.pages-div,
+.readStatus-div,
+.bookPicture {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(151, 151, 151, 0.178);
+  width: 90%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 2px 2px rgb(219, 219, 219);
+}
+
+.form input {
+  width: 100%;
+  border: none;
+  background-color: rgba(201, 201, 201, 0.178);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.form label {
+  align-self: flex-start;
+}
+
+.submit-button input {
+  border-radius: 1rem;
+  background-color: black;
+  color: white;
+}
+.submit-button {
+  width: 90%;
+}
+
+.library {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.books {
+  position: relative;
+  width: 25%;
+  height: 37vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0.5rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 2px 2px rgb(219, 219, 219);
+}
+
+#del-button {
+  background-color: red;
+  padding: 0.5rem;
+  border: none;
+  position: absolute;
+  top: 10px;
+  left: 290px;
 }

@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="icon" href="data:;base64,=" />
@@ -19,7 +15,8 @@
         <h1>MyLibrary</h1>
       </div>
       <div class="addNewBook">
-        <button>Add a new book</button>
+        <button id="addBook">Add a new book</button>
+
         <form class="form">
           <div class="author-div">
             <label for="author">What is the book author?</label><br />
@@ -47,13 +44,26 @@
               placeholder="Optional"
             />
           </div>
-          <div>
+          <div class="submit-button">
             <input type="submit" value="Submit" />
           </div>
         </form>
       </div>
       <div class="library">
         <div class="books">
+          <button id="del-button"></button>
+          <h2>Title</h2>
+          <h2>Author</h2>
+          <h2>Pages</h2>
+          <img
+            src="Black_Book_PNG_Clipart-1048.png"
+            alt="book"
+            width="150"
+            height="150"
+          />
+        </div>
+        <div class="books">
+          <button id="del-button"></button>
           <h2>Title</h2>
           <h2>Author</h2>
           <h2>Pages</h2>
