@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="icon" href="data:;base64,=" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <title>MyLibrary</title>
   </head>
   <body>
@@ -15,12 +26,12 @@
         <h1>MyLibrary</h1>
       </div>
       <div class="addNewBook">
-        <button id="addBook">Add a new book</button>
+        <button id="addBook">ADD A NEW BOOK</button>
 
-        <form class="form">
+        <div class="form">
           <div class="author-div">
             <label for="author">What is the book author?</label><br />
-            <input type="text" id="authorName" name="author" />
+            <input type="text" id="authorName" />
           </div>
           <div class="title-div">
             <label for="title">What is the title of the book?</label><br />
@@ -45,13 +56,18 @@
             />
           </div>
           <div class="submit-button">
-            <input type="submit" value="Submit" />
+            <input type="submit" id="submitted" />
           </div>
-        </form>
+        </div>
       </div>
       <div class="library">
         <div class="books">
-          <button id="del-button"></button>
+          <button id="read-button">
+            Read<br />Status<br /><i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+          <button id="del-button">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
           <h2>Title</h2>
           <h2>Author</h2>
           <h2>Pages</h2>
@@ -63,7 +79,12 @@
           />
         </div>
         <div class="books">
-          <button id="del-button"></button>
+          <button id="read-button">
+            Read<br />Status<br /><i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+          <button id="del-button">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
           <h2>Title</h2>
           <h2>Author</h2>
           <h2>Pages</h2>
@@ -74,6 +95,10 @@
             height="150"
           />
         </div>
+      </div>
+      <div class="footnote">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        https://github.com/funkosaur
       </div>
     </div>
     <script src="script.js"></script>

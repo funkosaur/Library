@@ -6,6 +6,8 @@
   display: grid;
   grid-template-rows: 0.2fr minmax(0.2fr, 1fr) 1fr;
   grid-gap: 2rem;
+  background-color: #fefae0;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -22,8 +24,7 @@
   justify-content: center;
   align-items: center;
   height: 20vh;
-  font-size: 3rem;
-  font-weight: bold;
+  font-size: 4rem;
 }
 
 .addNewBook {
@@ -38,6 +39,10 @@
   grid-row: 3/4;
 }
 
+body {
+  background-image: url(lib.jpeg);
+}
+
 .form {
   display: flex;
   transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -47,10 +52,11 @@
   height: 60vh;
   align-items: center;
   width: 35%;
-  box-shadow: 0px 0px 4px 4px rgb(158, 158, 158);
-  border: none;
+  box-shadow: 0px 0px 4px 4px rgb(40, 54, 24);
   border-radius: 0.5rem;
   padding: 1rem 0 1rem 0;
+  background-color: #dda15e;
+  color: #fefae0;
 }
 
 #addBook {
@@ -58,14 +64,16 @@
   width: 65%;
   margin-bottom: 2rem;
   font-weight: bold;
-  background-color: #008cba;
+  background-color: #606c38;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  color: #fefae0;
+  font-size: 1rem;
 }
 
 #addBook:hover {
-  background-color: #07a9df;
+  background-color: #283618;
 }
 
 .author-div,
@@ -78,17 +86,17 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  background-color: rgba(151, 151, 151, 0.178);
+  background-color: #bc6c25;
   width: 90%;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0px 0px 2px 2px rgb(219, 219, 219);
+  box-shadow: 0px 0px 2px 2px rgb(254, 250, 224);
 }
 
 .form input {
   width: 100%;
   border: none;
-  background-color: rgba(201, 201, 201, 0.178);
+  background-color: rgba(254, 250, 224);
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
@@ -99,11 +107,17 @@
 
 .submit-button input {
   border-radius: 1rem;
-  background-color: black;
-  color: white;
+  background-color: #606c38;
+  color: rgba(254, 250, 224);
+  font-weight: bold;
 }
 .submit-button {
   width: 90%;
+}
+
+.submit-button input:hover {
+  background-color: #283618;
+  cursor: pointer;
 }
 
 .library {
@@ -124,15 +138,39 @@
   font-size: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0px 0px 2px 2px rgb(219, 219, 219);
+  background-color: #dda15e;
+  color: rgba(254, 250, 224);
 }
 
 #del-button {
-  background-color: red;
-  padding: 0.5rem;
+  color: #283618;
+  background-color: #dda15e;
   border: none;
   position: absolute;
   top: 10px;
   left: 290px;
+}
+
+#read-button {
+  color: #283618;
+  background-color: #dda25e00;
+  border: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+#del-button:hover {
+  background-color: #bc6c25;
+}
+
+.footnote {
+  padding: 2rem;
+  background-color: #bc6c25;
+  font-size: 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 @keyframes fadeIn {
