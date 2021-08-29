@@ -3,9 +3,6 @@
 }
 
 .layout {
-  display: grid;
-  grid-template-rows: 0.2fr 0.2fr 1fr 1fr 0.2fr;
-  grid-gap: 2rem;
   background-color: #fefae0;
   font-family: "Roboto", sans-serif;
   height: 100%;
@@ -220,7 +217,7 @@ body {
 @media only screen and (max-width: 370px) {
   .form {
     width: 80%;
-    height: 100vh;
+    height: 90vh;
   }
 }
 
