@@ -203,21 +203,21 @@ body {
 @media only screen and (max-width: 1007px) {
   .form {
     width: 60%;
-    height: 70vh;
+    
   }
 }
 
 @media only screen and (max-width: 608px) {
   .form {
     width: 70%;
-    height: 80vh;
+    
   }
 }
 
 @media only screen and (max-width: 370px) {
   .form {
     width: 80%;
-    height: 90vh;
+    
   }
 }
 

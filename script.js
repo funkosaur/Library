@@ -9,13 +9,13 @@ window.addEventListener("resize", ()=>{
 document.body.clientWidth;
 
     if(width <= 370){
-        form.style.height = "90vh";
+        form.style.height = "50vh";
        
    } else if(width <= 608){
-        form.style.height = "80vh";
+        form.style.height = "50vh";
        
    } else if(width <= 1007){
-        form.style.height = "70vh";
+        form.style.height = "50vh";
        
    } else { form.style.height = "60vh"; }
 })
@@ -28,13 +28,13 @@ document.body.clientWidth;
     if(form.style.height == "0vh"){
        
         if(width <= 370){
-             form.style.height = "90vh";
+             form.style.height = "50vh";
             
         } else if(width <= 608){
-             form.style.height = "80vh";
+             form.style.height = "50vh";
             
         } else if(width <= 1007){
-             form.style.height = "70vh";
+             form.style.height = "50vh";
             
         } else { form.style.height = "60vh"; }
         
