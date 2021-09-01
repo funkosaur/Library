@@ -52,7 +52,7 @@ body {
   display: flex;
   transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
   justify-content: space-between;
   height: 60vh;
   align-items: center;
@@ -128,6 +128,7 @@ body {
 .library {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .books {
@@ -145,8 +146,6 @@ body {
 }
 
 .read-button-div {
-  grid-column: 1/2;
-  grid-row: 1/2;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -184,7 +183,7 @@ body {
   color: #283618;
   background-color: #dda25e00;
   border: none;
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 
 #del-button:hover {
@@ -203,21 +202,33 @@ body {
 @media only screen and (max-width: 1007px) {
   .form {
     width: 60%;
-    
+  }
+  .books {
+    width: 30%;
   }
 }
 
 @media only screen and (max-width: 608px) {
   .form {
-    width: 70%;
-    
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 794px) {
+  .books {
+    width: 47%;
+  }
+}
+
+@media only screen and (max-width: 574px) {
+  .books {
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 370px) {
   .form {
     width: 80%;
-    
   }
 }
 

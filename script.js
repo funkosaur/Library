@@ -2,6 +2,8 @@ const addNewBook = document.querySelector("#addBook");
 const form = document.querySelector(".form");
 const submit = document.querySelector("#submitted");
 const layout = document.querySelector(".layout");
+const library = document.querySelector(".library");
+const bookSies = document.querySelectorAll(".books");
 
 window.addEventListener("resize", ()=>{
 
@@ -37,15 +39,18 @@ document.body.clientWidth;
              form.style.height = "50vh";
             
         } else { form.style.height = "60vh"; }
-        
+        form.style.overflow = "auto"
         form.style.padding = "1rem 0 1rem 0";
         form.style.boxShadow =  "0px 0px 4px 4px rgb(158, 158, 158)";
-        layout.style.gridTemplateRows = "0.2fr 0.2fr 1fr 1fr 0.2fr"
+        library.style.marginTop = "2rem";
+        
     } else {
+    form.style.overflow = "hidden"
     form.style.height = "0vh";
     form.style.padding = "0";
     form.style.boxShadow =  "none";
-    layout.style.gridTemplateRows = "0.2fr 0.2fr 0.1fr 1fr 0.2fr"
+    library.style.marginTop = "0rem";
+    
 }
 });
 
@@ -70,12 +75,48 @@ submit.addEventListener("click", () => {
     let newestBook = new Book(authorName.value, bookName.value, pageNumber.value, readStatus.value, bookPicture.value)
 
     myLibrary.push(newestBook);
-    console.log(myLibrary)
+    console.log(myLibrary);
+
+    while ( library.firstChild ) library.removeChild( library.firstChild );
 
     myLibrary.forEach(book => {
         const bookDivs = document.createElement("div");
         bookDivs.classList.add("books");
         bookDivs.setAttribute('data-index', myLibrary.indexOf(book));
+        const readDiv = document.createElement("div");
+        readDiv.classList.add("read-button-div");
+        bookDivs.appendChild(readDiv);
+        const readBtn = document.createElement("button"); 
+        readBtn.setAttribute('id', "read-button");
+        readDiv.appendChild(readBtn);
+        readBtn.innerHTML = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
+        const tapd = document.createElement("div");
+        tapd.classList.add("title-author-page-div");
+        bookDivs.appendChild(tapd);
+        const hTitle = document.createElement("h2");
+        hTitle.textContent = book.title;
+        tapd.appendChild(hTitle);
+        const hAuthor = document.createElement("h2");
+        hAuthor.textContent = book.author;
+        tapd.appendChild(hAuthor);
+        const hPages = document.createElement("h2");
+        hPages.textContent = book.pages;
+        tapd.appendChild(hPages);
+        const delBtnDiv = document.createElement("div");
+        delBtnDiv.classList.add("del-button-div");
+        bookDivs.appendChild(delBtnDiv);
+        const delBtn = document.createElement("button");
+        delBtn.setAttribute('id', "del-button");
+        delBtnDiv.appendChild(delBtn);
+        delBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+        const imgDiv = document.createElement("img");
+        imgDiv.setAttribute('src', book.picture);
+        imgDiv.setAttribute('alt', "book");
+        imgDiv.style.width = "100%";
+        imgDiv.style.height = "350px";
+        bookDivs.appendChild(imgDiv);
+        bookDivs.setAttribute("data-display", "displayed");
+        library.appendChild(bookDivs);
         
     })
     
