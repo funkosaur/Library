@@ -25,18 +25,35 @@
         <button id="addBook">ADD A NEW BOOK</button>
       </div>
       <div class="form1">
-        <div class="form">
+        <form class="form">
           <div class="author-div">
             <label for="author">What is the book author?</label><br />
-            <input type="text" id="authorName" />
+            <input
+              type="text"
+              id="authorName"
+              class="requiredInputs"
+              required
+            />
           </div>
           <div class="title-div">
             <label for="title">What is the title of the book?</label><br />
-            <input type="text" id="bookName" name="title" />
+            <input
+              type="text"
+              id="bookName"
+              name="title"
+              class="requiredInputs"
+              required
+            />
           </div>
           <div class="pages-div">
             <label for="pages">How many pages does the book have?</label><br />
-            <input type="text" id="pageNumber" name="pages" />
+            <input
+              type="text"
+              id="pageNumber"
+              name="pages"
+              class="requiredInputs"
+              required
+            />
           </div>
           <div class="readStatus-div">
             <label for="read-status">Have you read the book?</label><br />
@@ -55,7 +72,7 @@
           <div class="submit-button">
             <input type="submit" id="submitted" />
           </div>
-        </div>
+        </form>
       </div>
 
       <div class="library">

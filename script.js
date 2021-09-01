@@ -4,6 +4,7 @@ const submit = document.querySelector("#submitted");
 const layout = document.querySelector(".layout");
 const library = document.querySelector(".library");
 const bookSies = document.querySelectorAll(".books");
+const delButton = document.querySelectorAll("#del-button");
 
 window.addEventListener("resize", ()=>{
 
@@ -71,7 +72,7 @@ submit.addEventListener("click", () => {
     const pageNumber = document.querySelector("#pageNumber");
     const readStatus = document.querySelector("#readStatus");
     const bookPicture = document.querySelector("#pictureURL");
-    
+
     let newestBook = new Book(authorName.value, bookName.value, pageNumber.value, readStatus.value, bookPicture.value)
 
     myLibrary.push(newestBook);
@@ -100,13 +101,14 @@ submit.addEventListener("click", () => {
         hAuthor.textContent = book.author;
         tapd.appendChild(hAuthor);
         const hPages = document.createElement("h2");
-        hPages.textContent = book.pages;
+        hPages.textContent = `${book.pages} pages`;
         tapd.appendChild(hPages);
         const delBtnDiv = document.createElement("div");
         delBtnDiv.classList.add("del-button-div");
         bookDivs.appendChild(delBtnDiv);
         const delBtn = document.createElement("button");
         delBtn.setAttribute('id', "del-button");
+        delBtn.setAttribute('data-index', myLibrary.indexOf(book));
         delBtnDiv.appendChild(delBtn);
         delBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
         const imgDiv = document.createElement("img");
@@ -115,8 +117,13 @@ submit.addEventListener("click", () => {
         imgDiv.style.width = "100%";
         imgDiv.style.height = "350px";
         bookDivs.appendChild(imgDiv);
-        bookDivs.setAttribute("data-display", "displayed");
         library.appendChild(bookDivs);
+        delBtn.addEventListener("click", () => {
+            let buttonForIndex = delBtn.getAttribute("data-index");
+            myLibrary.splice(buttonForIndex, 1);
+            let bookDiv = document.querySelector(`[data-index='${buttonForIndex}']`);
+            bookDiv.remove();
+        })
         
     })
     
@@ -127,5 +134,9 @@ submit.addEventListener("click", () => {
     bookPicture.value = "";
 
 });
+
+
+
+
 
 
