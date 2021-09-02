@@ -86,6 +86,10 @@ submit.addEventListener("click", function sabMit () {
     const readStatus = document.querySelector("#readStatus");
     const bookPicture = document.querySelector("#pictureURL");
 
+    if (authorName.value == "" || bookName.value == "" || pageNumber.value == ""){
+        return
+    }
+
     let newestBook = new Book(authorName.value, bookName.value, pageNumber.value, readStatus.value, bookPicture.value)
 
     myLibrary.push(newestBook);
@@ -95,11 +99,8 @@ submit.addEventListener("click", function sabMit () {
 
     const inputS = document.querySelectorAll("requiredInputs");
 
-    inputS.forEach(input => {
-        if(input.value == ""){
-            return
-        }
-    })
+    
+     
 
 
     myLibrary.forEach(book => {
