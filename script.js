@@ -6,6 +6,19 @@ const library = document.querySelector(".library");
 const bookSies = document.querySelectorAll(".books");
 const delButton = document.querySelectorAll("#del-button");
 
+(function () {
+    const inputS = document.querySelectorAll("requiredInputs");
+    inputS.forEach(input => {
+        let formElements = document.forms['form'].elements['text'].value;
+        console.log(input.value)
+        if(input.value == "" || input.value == null || formElements.value == ""){
+            console.log(input.value)
+            sumbit.removeEventListener("click", sabMit)
+        }
+    })
+  })();
+  
+
 window.addEventListener("resize", ()=>{
 
     const width  = window.innerWidth || document.documentElement.clientWidth || 
@@ -66,7 +79,7 @@ function Book(author, title, pages, read, picture){
     
 }
 
-submit.addEventListener("click", () => {
+submit.addEventListener("click", function sabMit () {
     const authorName = document.querySelector("#authorName");
     const bookName = document.querySelector("#bookName");
     const pageNumber = document.querySelector("#pageNumber");
@@ -79,6 +92,15 @@ submit.addEventListener("click", () => {
     console.log(myLibrary);
 
     while ( library.firstChild ) library.removeChild( library.firstChild );
+
+    const inputS = document.querySelectorAll("requiredInputs");
+
+    inputS.forEach(input => {
+        if(input.value == ""){
+            return
+        }
+    })
+
 
     myLibrary.forEach(book => {
         const bookDivs = document.createElement("div");
@@ -107,6 +129,17 @@ submit.addEventListener("click", () => {
         delBtnDiv.classList.add("del-button-div");
         bookDivs.appendChild(delBtnDiv);
         const delBtn = document.createElement("button");
+        delBtn.addEventListener("click", () => {
+            let buttonForIndex = delBtn.getAttribute("data-index");
+            myLibrary.splice(buttonForIndex, 1);
+            console.log(myLibrary);
+            let bookDiv = document.querySelector(`[data-index='${buttonForIndex}']`);
+            bookDiv.remove();
+            let ayy = library.querySelectorAll(`[data-index]`);
+            ayy.forEach(ay => {
+            ay.setAttribute('data-index', buttonForIndex)
+    })
+        })
         delBtn.setAttribute('id', "del-button");
         delBtn.setAttribute('data-index', myLibrary.indexOf(book));
         delBtnDiv.appendChild(delBtn);
@@ -118,12 +151,9 @@ submit.addEventListener("click", () => {
         imgDiv.style.height = "350px";
         bookDivs.appendChild(imgDiv);
         library.appendChild(bookDivs);
-        delBtn.addEventListener("click", () => {
-            let buttonForIndex = delBtn.getAttribute("data-index");
-            myLibrary.splice(buttonForIndex, 1);
-            let bookDiv = document.querySelector(`[data-index='${buttonForIndex}']`);
-            bookDiv.remove();
-        })
+        
+
+        
         
     })
     
@@ -136,7 +166,12 @@ submit.addEventListener("click", () => {
 });
 
 
-
+function updaTe () {
+    let ayy = library.querySelectorAll(`[data-index]`);
+    ayy.forEach(ay => {
+        ay.setAttribute('data-index',)
+    })
+}
 
 
 
