@@ -85,8 +85,9 @@ submit.addEventListener("click", function sabMit () {
     const pageNumber = document.querySelector("#pageNumber");
     const readStatus = document.querySelector("#readStatus");
     const bookPicture = document.querySelector("#pictureURL");
+    console.log(typeof pageNumber.value)
 
-    if (authorName.value == "" || bookName.value == "" || pageNumber.value == ""){
+    if (authorName.value == "" || bookName.value == "" || pageNumber.value == "" || pageNumber.value.match(/\d+/g)){
         return
     }
 
@@ -130,19 +131,20 @@ submit.addEventListener("click", function sabMit () {
         delBtnDiv.classList.add("del-button-div");
         bookDivs.appendChild(delBtnDiv);
         const delBtn = document.createElement("button");
+        
         delBtn.addEventListener("click", () => {
-            let buttonForIndex = delBtn.getAttribute("data-index");
+            let buttonForIndex = bookDivs.getAttribute("data-index");
             myLibrary.splice(buttonForIndex, 1);
             console.log(myLibrary);
             let bookDiv = document.querySelector(`[data-index='${buttonForIndex}']`);
             bookDiv.remove();
             let ayy = library.querySelectorAll(`[data-index]`);
-            ayy.forEach(ay => {
-            ay.setAttribute('data-index', buttonForIndex)
-    })
+            console.log(ayy)
+            for (let i = 0; i < ayy.length; i++){
+                ayy[i].setAttribute('data-index', [i])
+            };
         })
         delBtn.setAttribute('id', "del-button");
-        delBtn.setAttribute('data-index', myLibrary.indexOf(book));
         delBtnDiv.appendChild(delBtn);
         delBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
         const imgDiv = document.createElement("img");
@@ -173,6 +175,5 @@ function updaTe () {
         ay.setAttribute('data-index',)
     })
 }
-
 
 
