@@ -6,8 +6,6 @@ const library = document.querySelector(".library");
 const bookSies = document.querySelectorAll(".books");
 const delButton = document.querySelectorAll("#del-button");
 
-
-
   
 
 window.addEventListener("resize", ()=>{
@@ -16,32 +14,37 @@ window.addEventListener("resize", ()=>{
 document.body.clientWidth;
 
     if(width <= 370){
-        form.style.height = "60vh";
+        form.style.height = "90vh";
        
    } else if(width <= 608){
-        form.style.height = "50vh";
+        form.style.height = "80vh";
        
    } else if(width <= 1007){
-        form.style.height = "50vh";
+        form.style.height = "70vh";
        
    } else { form.style.height = "60vh"; }
 })
 
 
 addNewBook.addEventListener("click", ()=>{
+    
+    const addBookNew = document.querySelector("#addBook");
+    if(addBookNew.textContent == "I DONT WANT TO ADD A NEW BOOK"){
+        addBookNew.textContent = "ADD A NEW BOOK"
+    }else {addBookNew.textContent = "I DONT WANT TO ADD A NEW BOOK"}
     const width  = window.innerWidth || document.documentElement.clientWidth || 
 document.body.clientWidth;
     
     if(form.style.height == "0vh"){
        
         if(width <= 370){
-             form.style.height = "70vh";
+             form.style.height = "90vh";
             
         } else if(width <= 608){
-             form.style.height = "60vh";
+             form.style.height = "80vh";
             
         } else if(width <= 1007){
-             form.style.height = "50vh";
+             form.style.height = "70vh";
             
         } else { form.style.height = "60vh"; }
         form.style.overflow = "auto"
@@ -103,9 +106,9 @@ submit.addEventListener("click", function sabMit () {
     if (authorName.value == "" || bookName.value == "" || pageNumber.value == ""){
         return
     }
+
+
     
-
-
     if(bookPicture.value == "") {
         bookPicture.value = "Black_Book_PNG_Clipart-1048.png "
     }
@@ -169,6 +172,10 @@ submit.addEventListener("click", function sabMit () {
         imgDiv.setAttribute('alt', "book");
         imgDiv.style.width = "100%";
         imgDiv.style.height = "350px";
+        if(book.read == "yes"){
+            readBtn.innerHTML = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
+
+        }else{readBtn.innerHTML = 'Read<br/>Status<br/><i class="fa fa-times-circle" aria-hidden="true"></i>';}
         bookDivs.appendChild(imgDiv);
         library.appendChild(bookDivs);
         
