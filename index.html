@@ -25,9 +25,11 @@
         <button id="addBook">ADD A NEW BOOK</button>
       </div>
       <div class="form1">
-        <form class="form">
+        <div class="form">
           <div class="author-div">
-            <label for="author">What is the book author?</label><br />
+            <label id="whatisAuthor" for="author"
+              >What is the book author?</label
+            ><br />
             <input
               type="text"
               id="authorName"
@@ -48,7 +50,7 @@
           <div class="pages-div">
             <label for="pages">How many pages does the book have?</label><br />
             <input
-              type="text"
+              type="number"
               id="pageNumber"
               name="pages"
               class="requiredInputs"
@@ -73,7 +75,7 @@
           <div class="submit-button">
             <input type="submit" id="submitted" />
           </div>
-        </form>
+        </div>
       </div>
 
       <div class="library">

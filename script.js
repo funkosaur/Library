@@ -6,17 +6,8 @@ const library = document.querySelector(".library");
 const bookSies = document.querySelectorAll(".books");
 const delButton = document.querySelectorAll("#del-button");
 
-(function () {
-    const inputS = document.querySelectorAll("requiredInputs");
-    inputS.forEach(input => {
-        let formElements = document.forms['form'].elements['text'].value;
-        console.log(input.value)
-        if(input.value == "" || input.value == null || formElements.value == ""){
-            console.log(input.value)
-            sumbit.removeEventListener("click", sabMit)
-        }
-    })
-  })();
+
+
   
 
 window.addEventListener("resize", ()=>{
@@ -25,7 +16,7 @@ window.addEventListener("resize", ()=>{
 document.body.clientWidth;
 
     if(width <= 370){
-        form.style.height = "50vh";
+        form.style.height = "60vh";
        
    } else if(width <= 608){
         form.style.height = "50vh";
@@ -44,10 +35,10 @@ document.body.clientWidth;
     if(form.style.height == "0vh"){
        
         if(width <= 370){
-             form.style.height = "50vh";
+             form.style.height = "70vh";
             
         } else if(width <= 608){
-             form.style.height = "50vh";
+             form.style.height = "60vh";
             
         } else if(width <= 1007){
              form.style.height = "50vh";
@@ -85,10 +76,38 @@ submit.addEventListener("click", function sabMit () {
     const pageNumber = document.querySelector("#pageNumber");
     const readStatus = document.querySelector("#readStatus");
     const bookPicture = document.querySelector("#pictureURL");
-    console.log(typeof pageNumber.value)
+    const authorDiv = document.querySelector(".author-div");
+    const titleDiv = document.querySelector(".title-div");
+    const pageDiv = document.querySelector(".pages-div");
 
-    if (authorName.value == "" || bookName.value == "" || pageNumber.value == "" || pageNumber.value.match(/\d+/g)){
+    if(authorName.value == ""){
+        authorDiv.style.boxShadow = "0px 0px 2px 2px rgb(255,0,0)"
+        setTimeout(function(){ authorDiv.style.boxShadow = "0px 0px 2px 2px rgb(254, 250, 224)"; }, 2000);
+
+    }
+
+    if(bookName.value == ""){
+        titleDiv.style.boxShadow = "0px 0px 2px 2px rgb(255,0,0)"
+        setTimeout(function(){ titleDiv.style.boxShadow = "0px 0px 2px 2px rgb(254, 250, 224)"; }, 2000);
+
+    }
+
+    if(pageNumber.value == ""){
+        pageDiv.style.boxShadow = "0px 0px 2px 2px rgb(255,0,0)"
+        setTimeout(function(){ pageDiv.style.boxShadow = "0px 0px 2px 2px rgb(254, 250, 224)"; }, 2000);
+
+    }
+
+
+
+    if (authorName.value == "" || bookName.value == "" || pageNumber.value == ""){
         return
+    }
+    
+
+
+    if(bookPicture.value == "") {
+        bookPicture.value = "Black_Book_PNG_Clipart-1048.png "
     }
 
     let newestBook = new Book(authorName.value, bookName.value, pageNumber.value, readStatus.value, bookPicture.value)
@@ -98,9 +117,7 @@ submit.addEventListener("click", function sabMit () {
 
     while ( library.firstChild ) library.removeChild( library.firstChild );
 
-    const inputS = document.querySelectorAll("requiredInputs");
 
-    
      
 
 
@@ -119,10 +136,10 @@ submit.addEventListener("click", function sabMit () {
         tapd.classList.add("title-author-page-div");
         bookDivs.appendChild(tapd);
         const hTitle = document.createElement("h2");
-        hTitle.textContent = book.title;
+        hTitle.textContent = book.author;
         tapd.appendChild(hTitle);
         const hAuthor = document.createElement("h2");
-        hAuthor.textContent = book.author;
+        hAuthor.textContent = book.title;
         tapd.appendChild(hAuthor);
         const hPages = document.createElement("h2");
         hPages.textContent = `${book.pages} pages`;
@@ -169,11 +186,14 @@ submit.addEventListener("click", function sabMit () {
 });
 
 
-function updaTe () {
-    let ayy = library.querySelectorAll(`[data-index]`);
-    ayy.forEach(ay => {
-        ay.setAttribute('data-index',)
+(function () {
+    const inputS = document.querySelectorAll("requiredInputs");
+    inputS.forEach(input => {
+        let formElements = document.forms['form'].elements['text'].value;
+        console.log(input.value)
+        if(input.value == "" || input.value == null || formElements.value == ""){
+            console.log(input.value)
+            sumbit.removeEventListener("click", sabMit)
+        }
     })
-}
-
-
+  })();
