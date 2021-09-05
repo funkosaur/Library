@@ -174,16 +174,3 @@ submit.addEventListener("click", function sabMit () {
     bookPicture.value = "";
 
 });
-
-
-(function () {
-    const inputS = document.querySelectorAll("requiredInputs");
-    inputS.forEach(input => {
-        let formElements = document.forms['form'].elements['text'].value;
-        console.log(input.value)
-        if(input.value == "" || input.value == null || formElements.value == ""){
-            console.log(input.value)
-            sumbit.removeEventListener("click", sabMit)
-        }
-    })
-  })();
