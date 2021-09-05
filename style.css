@@ -219,7 +219,6 @@ body {
 @media only screen and (max-width: 608px) {
   .form {
     width: 80%;
-    height: 70vh;
   }
 }
 
@@ -233,15 +232,11 @@ body {
   .books {
     width: 100%;
   }
-  .form {
-    height: 80vh;
-  }
 }
 
 @media only screen and (max-width: 370px) {
   .form {
     width: 80%;
-    height: 90vh;
   }
 }
 
