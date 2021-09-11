@@ -117,7 +117,7 @@ submit.addEventListener("click", function sabMit () {
         const readBtn = document.createElement("button"); 
         readBtn.setAttribute('id', "read-button");
         readDiv.appendChild(readBtn);
-        readBtn.innerHTML = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
+        readBtn.content = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
         const tapd = document.createElement("div");
         tapd.classList.add("title-author-page-div");
         bookDivs.appendChild(tapd);
@@ -149,16 +149,16 @@ submit.addEventListener("click", function sabMit () {
         })
         delBtn.setAttribute('id', "del-button");
         delBtnDiv.appendChild(delBtn);
-        delBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+        delBtn.content = '<i class="fa fa-times" aria-hidden="true"></i>';
         const imgDiv = document.createElement("img");
         imgDiv.setAttribute('src', book.picture);
         imgDiv.setAttribute('alt', "book");
         imgDiv.style.width = "100%";
         imgDiv.style.height = "350px";
         if(book.read == "yes"){
-            readBtn.innerHTML = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
+            readBtn.content = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
 
-        }else{readBtn.innerHTML = 'Read<br/>Status<br/><i class="fa fa-times-circle" aria-hidden="true"></i>';}
+        }else{readBtn.content = 'Read<br/>Status<br/><i class="fa fa-times-circle" aria-hidden="true"></i>';}
         bookDivs.appendChild(imgDiv);
         library.appendChild(bookDivs);
         
