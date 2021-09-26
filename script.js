@@ -6,7 +6,7 @@ const library = document.querySelector(".library");
 const bookSies = document.querySelectorAll(".books");
 const delButton = document.querySelectorAll("#del-button");
 
-  
+// function for not letting the keyboard showing on mobile change the height of the form  
 setTimeout(function () {
     let viewheight = window.visualViewport.height;
     let viewwidth = window.visualViewport.width;
@@ -18,7 +18,7 @@ setTimeout(function () {
 
 let originalHeight = form.offsetHeight;
 
-
+// button for hiding and showing the form also changes the text for the button
 addNewBook.addEventListener("click", ()=>{
     
     const addBookNew = document.querySelector("#addBook");
@@ -45,8 +45,10 @@ document.body.clientWidth;
 }
 });
 
+// primary library array
 let myLibrary = [];
 
+// new book constructor
 function Book(author, title, pages, read, picture){
     this.author = author
     this.title = title
@@ -56,6 +58,7 @@ function Book(author, title, pages, read, picture){
     
 }
 
+// submit button functions do most of the work
 submit.addEventListener("click", function sabMit () {
     const authorName = document.querySelector("#authorName");
     const bookName = document.querySelector("#bookName");
@@ -65,6 +68,8 @@ submit.addEventListener("click", function sabMit () {
     const authorDiv = document.querySelector(".author-div");
     const titleDiv = document.querySelector(".title-div");
     const pageDiv = document.querySelector(".pages-div");
+
+    // showing red outline on empty inputs
 
     if(authorName.value == ""){
         authorDiv.style.boxShadow = "0px 0px 2px 2px rgb(255,0,0)"
@@ -85,7 +90,7 @@ submit.addEventListener("click", function sabMit () {
     }
 
 
-
+    // checks for empty inputs
     if (authorName.value == "" || bookName.value == "" || pageNumber.value == ""){
         return
     }
@@ -96,17 +101,21 @@ submit.addEventListener("click", function sabMit () {
         bookPicture.value = "Black_Book_PNG_Clipart-1048.png "
     }
 
+    
+    // new book constructor which then pushes the new book to the primary array
     let newestBook = new Book(authorName.value, bookName.value, pageNumber.value, readStatus.value, bookPicture.value)
 
     myLibrary.push(newestBook);
     console.log(myLibrary);
 
+
+    // deletes the previous array displayed from the website 
     while ( library.firstChild ) library.removeChild( library.firstChild );
 
 
      
 
-
+    // function for displaying the whole new array
     myLibrary.forEach(book => {
         const bookDivs = document.createElement("div");
         bookDivs.classList.add("books");
@@ -117,7 +126,7 @@ submit.addEventListener("click", function sabMit () {
         const readBtn = document.createElement("button"); 
         readBtn.setAttribute('id', "read-button");
         readDiv.appendChild(readBtn);
-        readBtn.content = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
+        readBtn.setAttribute('style', 'white-space: pre;');
         const tapd = document.createElement("div");
         tapd.classList.add("title-author-page-div");
         bookDivs.appendChild(tapd);
@@ -149,16 +158,31 @@ submit.addEventListener("click", function sabMit () {
         })
         delBtn.setAttribute('id', "del-button");
         delBtnDiv.appendChild(delBtn);
-        delBtn.content = '<i class="fa fa-times" aria-hidden="true"></i>';
+        const deleteBtnImg = document.createElement("i");
+        deleteBtnImg.classList.add("fa");
+        deleteBtnImg.classList.add("fa-times")
+        delBtn.appendChild(deleteBtnImg);
         const imgDiv = document.createElement("img");
         imgDiv.setAttribute('src', book.picture);
         imgDiv.setAttribute('alt', "book");
         imgDiv.style.width = "100%";
         imgDiv.style.height = "350px";
         if(book.read == "yes"){
-            readBtn.content = 'Read<br/>Status<br/><i class="fa fa-check" aria-hidden="true"></i>';
+            readBtn.textContent = "Read \r\n";
+            readBtn.textContent += "Status \r\n";
+            const readBtnStatus = document.createElement("i");
+            readBtnStatus.classList.add("fa");
+            readBtnStatus.classList.add("fa-check");
+            readBtn.appendChild(readBtnStatus);
 
-        }else{readBtn.content = 'Read<br/>Status<br/><i class="fa fa-times-circle" aria-hidden="true"></i>';}
+        }else{
+            readBtn.textContent = "Read \r\n";
+            readBtn.textContent += "Status \r\n";
+            const readBtnStatus = document.createElement("i");
+            readBtnStatus.classList.add("fa");
+            readBtnStatus.classList.add("fa-times");
+            readBtn.appendChild(readBtnStatus);
+    }
         bookDivs.appendChild(imgDiv);
         library.appendChild(bookDivs);
         
@@ -167,6 +191,7 @@ submit.addEventListener("click", function sabMit () {
         
     })
     
+    // refreshes the form to empty
     authorName.value = "";
     bookName.value = "";
     pageNumber.value = "";
