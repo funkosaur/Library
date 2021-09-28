@@ -58,6 +58,109 @@ function Book(author, title, pages, read, picture){
     
 }
 
+window.addEventListener("load", () => {
+    if(localStorage.length < 1) return
+
+    let keys = Object.keys(localStorage)
+    i = keys.length;
+
+    while ( i-- ) {
+        let currentKey = JSON.parse(localStorage.getItem(keys[i]))
+        myLibrary.push(currentKey);
+    }
+    displayBooks(myLibrary)
+
+})
+
+// function for displaying the whole new array
+function displayBooks(array){
+
+    array.forEach(book => {
+        const bookDivs = document.createElement("div");
+        bookDivs.classList.add("books");
+        bookDivs.setAttribute('data-index', myLibrary.indexOf(book));
+        bookDivs.setAttribute('data-title', book.title);
+        const readDiv = document.createElement("div");
+        readDiv.classList.add("read-button-div");
+        bookDivs.appendChild(readDiv);
+        const readBtn = document.createElement("button"); 
+        readBtn.setAttribute('id', "read-button");
+        readDiv.appendChild(readBtn);
+        readBtn.setAttribute('style', 'white-space: pre;');
+        const tapd = document.createElement("div");
+        tapd.classList.add("title-author-page-div");
+        bookDivs.appendChild(tapd);
+        const hTitle = document.createElement("h2");
+        hTitle.textContent = book.author;
+        tapd.appendChild(hTitle);
+        const hAuthor = document.createElement("h2");
+        hAuthor.textContent = book.title;
+        tapd.appendChild(hAuthor);
+        const hPages = document.createElement("h2");
+        hPages.textContent = `${book.pages} pages`;
+        tapd.appendChild(hPages);
+        const delBtnDiv = document.createElement("div");
+        delBtnDiv.classList.add("del-button-div");
+        bookDivs.appendChild(delBtnDiv);
+        const delBtn = document.createElement("button");
+        
+        delBtn.addEventListener("click", () => {
+            let buttonForIndex = bookDivs.getAttribute("data-index");
+            myLibrary.splice(buttonForIndex, 1);
+            console.log(myLibrary);
+            let bookDiv = document.querySelector(`[data-index='${buttonForIndex}']`);
+            let bookTitles = bookDivs.getAttribute("data-title");
+            bookDiv.remove();
+            let ayy = library.querySelectorAll(`[data-index]`);
+            console.log(ayy)
+            for (let i = 0; i < ayy.length; i++){
+                ayy[i].setAttribute('data-index', [i])
+            };
+            for (let i = 0; i < localStorage.length; i++){
+                let key = localStorage.key(i)
+                if (bookTitles == key){
+                    localStorage.removeItem(key)
+                }
+            }
+            console.log(localStorage)
+        })
+        delBtn.setAttribute('id', "del-button");
+        delBtnDiv.appendChild(delBtn);
+        const deleteBtnImg = document.createElement("i");
+        deleteBtnImg.classList.add("fa");
+        deleteBtnImg.classList.add("fa-times")
+        delBtn.appendChild(deleteBtnImg);
+        const imgDiv = document.createElement("img");
+        imgDiv.setAttribute('src', book.picture);
+        imgDiv.setAttribute('alt', "book");
+        imgDiv.style.width = "100%";
+        imgDiv.style.height = "350px";
+        if(book.read == "yes"){
+            readBtn.textContent = "Read \r\n";
+            readBtn.textContent += "Status \r\n";
+            const readBtnStatus = document.createElement("i");
+            readBtnStatus.classList.add("fa");
+            readBtnStatus.classList.add("fa-check");
+            readBtn.appendChild(readBtnStatus);
+
+        }else{
+            readBtn.textContent = "Read \r\n";
+            readBtn.textContent += "Status \r\n";
+            const readBtnStatus = document.createElement("i");
+            readBtnStatus.classList.add("fa");
+            readBtnStatus.classList.add("fa-times");
+            readBtn.appendChild(readBtnStatus);
+    }
+        bookDivs.appendChild(imgDiv);
+        library.appendChild(bookDivs);
+        
+
+        
+        
+    })
+
+}
+
 // submit button functions do most of the work
 submit.addEventListener("click", function sabMit () {
     const authorName = document.querySelector("#authorName");
@@ -106,6 +209,9 @@ submit.addEventListener("click", function sabMit () {
     let newestBook = new Book(authorName.value, bookName.value, pageNumber.value, readStatus.value, bookPicture.value)
 
     myLibrary.push(newestBook);
+    let myNewBook = JSON.stringify(newestBook);
+    localStorage.setItem(`${bookName.value}`, myNewBook);
+    console.log(localStorage)
     console.log(myLibrary);
 
 
@@ -115,81 +221,7 @@ submit.addEventListener("click", function sabMit () {
 
      
 
-    // function for displaying the whole new array
-    myLibrary.forEach(book => {
-        const bookDivs = document.createElement("div");
-        bookDivs.classList.add("books");
-        bookDivs.setAttribute('data-index', myLibrary.indexOf(book));
-        const readDiv = document.createElement("div");
-        readDiv.classList.add("read-button-div");
-        bookDivs.appendChild(readDiv);
-        const readBtn = document.createElement("button"); 
-        readBtn.setAttribute('id', "read-button");
-        readDiv.appendChild(readBtn);
-        readBtn.setAttribute('style', 'white-space: pre;');
-        const tapd = document.createElement("div");
-        tapd.classList.add("title-author-page-div");
-        bookDivs.appendChild(tapd);
-        const hTitle = document.createElement("h2");
-        hTitle.textContent = book.author;
-        tapd.appendChild(hTitle);
-        const hAuthor = document.createElement("h2");
-        hAuthor.textContent = book.title;
-        tapd.appendChild(hAuthor);
-        const hPages = document.createElement("h2");
-        hPages.textContent = `${book.pages} pages`;
-        tapd.appendChild(hPages);
-        const delBtnDiv = document.createElement("div");
-        delBtnDiv.classList.add("del-button-div");
-        bookDivs.appendChild(delBtnDiv);
-        const delBtn = document.createElement("button");
-        
-        delBtn.addEventListener("click", () => {
-            let buttonForIndex = bookDivs.getAttribute("data-index");
-            myLibrary.splice(buttonForIndex, 1);
-            console.log(myLibrary);
-            let bookDiv = document.querySelector(`[data-index='${buttonForIndex}']`);
-            bookDiv.remove();
-            let ayy = library.querySelectorAll(`[data-index]`);
-            console.log(ayy)
-            for (let i = 0; i < ayy.length; i++){
-                ayy[i].setAttribute('data-index', [i])
-            };
-        })
-        delBtn.setAttribute('id', "del-button");
-        delBtnDiv.appendChild(delBtn);
-        const deleteBtnImg = document.createElement("i");
-        deleteBtnImg.classList.add("fa");
-        deleteBtnImg.classList.add("fa-times")
-        delBtn.appendChild(deleteBtnImg);
-        const imgDiv = document.createElement("img");
-        imgDiv.setAttribute('src', book.picture);
-        imgDiv.setAttribute('alt', "book");
-        imgDiv.style.width = "100%";
-        imgDiv.style.height = "350px";
-        if(book.read == "yes"){
-            readBtn.textContent = "Read \r\n";
-            readBtn.textContent += "Status \r\n";
-            const readBtnStatus = document.createElement("i");
-            readBtnStatus.classList.add("fa");
-            readBtnStatus.classList.add("fa-check");
-            readBtn.appendChild(readBtnStatus);
-
-        }else{
-            readBtn.textContent = "Read \r\n";
-            readBtn.textContent += "Status \r\n";
-            const readBtnStatus = document.createElement("i");
-            readBtnStatus.classList.add("fa");
-            readBtnStatus.classList.add("fa-times");
-            readBtn.appendChild(readBtnStatus);
-    }
-        bookDivs.appendChild(imgDiv);
-        library.appendChild(bookDivs);
-        
-
-        
-        
-    })
+    displayBooks(myLibrary);
     
     // refreshes the form to empty
     authorName.value = "";
