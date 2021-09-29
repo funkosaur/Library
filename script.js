@@ -58,6 +58,12 @@ function Book(author, title, pages, read, picture){
     
 }
 
+Book.prototype.changeRead = function(){
+    if(this.read == yes) {
+        this.read = no;
+    }else {this.read = yes}
+}
+
 window.addEventListener("load", () => {
     if(localStorage.length < 1) return
 
