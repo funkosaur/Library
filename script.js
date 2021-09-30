@@ -6,7 +6,7 @@ const library = document.querySelector(".library");
 const bookSies = document.querySelectorAll(".books");
 const delButton = document.querySelectorAll("#del-button");
 
-// function for not letting the keyboard showing on mobile change the height of the form  
+// function for not letting the keyboard showing up on mobile change the height of the form  
 setTimeout(function () {
     let viewheight = window.visualViewport.height;
     let viewwidth = window.visualViewport.width;
@@ -59,11 +59,12 @@ function Book(author, title, pages, read, picture){
 }
 
 Book.prototype.changeRead = function(){
-    if(this.read == yes) {
-        this.read = no;
-    }else {this.read = yes}
+    if(this.read == no) {
+        this.read = yes;
+    }else {this.read = no}
 }
 
+// onload retrieve the book objects from localStorage put them in the primary library array and display them
 window.addEventListener("load", () => {
     if(localStorage.length < 1) return
 
@@ -128,7 +129,6 @@ function displayBooks(array){
                     localStorage.removeItem(key)
                 }
             }
-            console.log(localStorage)
         })
         delBtn.setAttribute('id', "del-button");
         delBtnDiv.appendChild(delBtn);
@@ -141,10 +141,11 @@ function displayBooks(array){
         imgDiv.setAttribute('alt', "book");
         imgDiv.style.width = "100%";
         imgDiv.style.height = "350px";
+        const readBtnStatus = document.createElement("i");
+
         if(book.read == "yes"){
             readBtn.textContent = "Read \r\n";
             readBtn.textContent += "Status \r\n";
-            const readBtnStatus = document.createElement("i");
             readBtnStatus.classList.add("fa");
             readBtnStatus.classList.add("fa-check");
             readBtn.appendChild(readBtnStatus);
@@ -152,11 +153,30 @@ function displayBooks(array){
         }else{
             readBtn.textContent = "Read \r\n";
             readBtn.textContent += "Status \r\n";
-            const readBtnStatus = document.createElement("i");
             readBtnStatus.classList.add("fa");
             readBtnStatus.classList.add("fa-times");
             readBtn.appendChild(readBtnStatus);
     }
+
+    readBtn.addEventListener("click", ()=>{
+        if(readBtnStatus.classList.contains("fa-check")){
+            readBtnStatus.classList.toggle("fa-times");
+            let bookTitlesThis = readBtn.parentElement.getAttribute("data-title");
+            console.log(bookTitlesThis)
+            myLibrary.forEach(books => {
+                if (books.title == bookTitlesThis) {
+                   books.read = "no"
+                }
+            })
+        }else {
+            readBtnStatus.classList.toggle("fa-check");
+            myLibrary.forEach(books => {
+                if (books.title == bookTitlesThis) {
+                   books.read = "no"
+                }
+            })
+        }
+    })
         bookDivs.appendChild(imgDiv);
         library.appendChild(bookDivs);
         
@@ -226,7 +246,7 @@ submit.addEventListener("click", function sabMit () {
 
 
      
-
+console.log(myLibrary)
     displayBooks(myLibrary);
     
     // refreshes the form to empty
