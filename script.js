@@ -26,16 +26,13 @@ addNewBook.addEventListener("click", ()=>{
         addBookNew.textContent = "ADD A NEW BOOK"
     }else {addBookNew.textContent = "I DONT WANT TO ADD A NEW BOOK"}
     const width  = window.innerWidth || document.documentElement.clientWidth || 
-document.body.clientWidth;
+    document.body.clientWidth;
     
     if(form.style.height == "0vh"){
-        
-       
         form.style.height = originalHeight * (100 / document.documentElement.clientHeight) + "vh"; 
         form.style.overflow = "auto"
         form.style.boxShadow =  "0px 0px 4px 4px rgb(158, 158, 158)";
         library.style.marginTop = "2rem";
-        
     } else {
     form.style.overflow = "hidden"
     form.style.height = "0vh";
@@ -110,7 +107,7 @@ function displayBooks(array){
         delBtnDiv.classList.add("del-button-div");
         bookDivs.appendChild(delBtnDiv);
         const delBtn = document.createElement("button");
-        
+        //delete button functionality to remove the book from the array and localStorage
         delBtn.addEventListener("click", () => {
             let buttonForIndex = bookDivs.getAttribute("data-index");
             myLibrary.splice(buttonForIndex, 1);
@@ -157,31 +154,32 @@ function displayBooks(array){
             readBtnStatus.classList.add("fa-times");
             readBtn.appendChild(readBtnStatus);
     }
-
+    //button to change the read status and update the book in the array
     readBtn.addEventListener("click", ()=>{
+        let bookTitlesThis = readDiv.parentElement.getAttribute("data-title");
         if(readBtnStatus.classList.contains("fa-check")){
-            readBtnStatus.classList.toggle("fa-times");
-            let bookTitlesThis = readBtn.parentElement.getAttribute("data-title");
-            console.log(bookTitlesThis)
+            readBtnStatus.classList.remove("fa-check");
+            readBtnStatus.classList.add("fa-times");
+            
             myLibrary.forEach(books => {
-                if (books.title == bookTitlesThis) {
+                if (books.title === bookTitlesThis) {
                    books.read = "no"
+                   
                 }
             })
         }else {
-            readBtnStatus.classList.toggle("fa-check");
+            readBtnStatus.classList.add("fa-check");
+            readBtnStatus.classList.remove("fa-times");
             myLibrary.forEach(books => {
-                if (books.title == bookTitlesThis) {
-                   books.read = "no"
+                if (books.title === bookTitlesThis) {
+                   books.read = "yes"
+                   
                 }
             })
         }
     })
         bookDivs.appendChild(imgDiv);
         library.appendChild(bookDivs);
-        
-
-        
         
     })
 
@@ -237,16 +235,10 @@ submit.addEventListener("click", function sabMit () {
     myLibrary.push(newestBook);
     let myNewBook = JSON.stringify(newestBook);
     localStorage.setItem(`${bookName.value}`, myNewBook);
-    console.log(localStorage)
-    console.log(myLibrary);
-
 
     // deletes the previous array displayed from the website 
     while ( library.firstChild ) library.removeChild( library.firstChild );
 
-
-     
-console.log(myLibrary)
     displayBooks(myLibrary);
     
     // refreshes the form to empty

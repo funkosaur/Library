@@ -163,6 +163,7 @@ body {
   align-items: flex-start;
 }
 
+
 .title-author-page-div {
   grid-column: 2/3;
   grid-row: 1/2;
@@ -171,6 +172,7 @@ body {
   align-items: center;
   justify-content: space-around;
   text-align: center;
+  overflow: hidden;
 }
 
 .del-button-div {
@@ -197,6 +199,10 @@ body {
   background-color: #dda25e00;
   border: none;
   font-size: 0.7em;
+}
+
+#read-button:hover{
+  background-color: #bc6c25;
 }
 
 #del-button:hover {
