@@ -55,12 +55,6 @@ function Book(author, title, pages, read, picture){
     
 }
 
-Book.prototype.changeRead = function(){
-    if(this.read == no) {
-        this.read = yes;
-    }else {this.read = no}
-}
-
 // onload retrieve the book objects from localStorage put them in the primary library array and display them
 window.addEventListener("load", () => {
     if(localStorage.length < 1) return
