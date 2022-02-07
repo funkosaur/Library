@@ -179,6 +179,8 @@ function displayBooks(array){
 
 }
 
+
+
 // submit button functions do most of the work
 submit.addEventListener("click", function sabMit () {
     const authorName = document.querySelector("#authorName");
