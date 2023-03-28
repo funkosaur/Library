@@ -10,7 +10,7 @@
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
+  - [Built with](#built-with)s
 - [Author](#author)
 
 ## Overview
